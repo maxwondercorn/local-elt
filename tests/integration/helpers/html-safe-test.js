@@ -15,10 +15,12 @@ module('Integration | Helper | html-safe', function (hooks) {
   });
 
   test('it renders classes', async function (assert) {
-    this.set('inputValue', 'red');
+    this.set('inputValue', 'red-outline');
 
-    await render(hbs`<div class="btn {{html-safe this.inputValue}}"></div>`);
+    await render(
+      hbs`<button class="btn {{html-safe this.inputValue}}" type="button">Push me</button>`
+    );
 
-    assert.dom(this.element).hasText('width: 21');
+    assert.dom('button').hasClass('red-outline');
   });
 });
