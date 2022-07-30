@@ -1,5 +1,5 @@
 {{#each this.columns as |column|}}
   {{! template-lint-disable no-inline-styles }}
-  <td style={{htmlSafe (if column.width (concat "width: " column.width))}} class="lt-scaffolding"></td>
+  <td style={{html-safe (if column.width (concat "width: " column.width))}} class="lt-scaffolding"></td>
   {{! template-lint-enable no-inline-styles }}
 {{/each}}
