@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   inViewport: service(),
 
-  classNames: ['lt-infinity'],
   scrollableContent: null,
   scrollBuffer: 50,
 
