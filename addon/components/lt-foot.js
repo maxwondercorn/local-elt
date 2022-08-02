@@ -30,7 +30,6 @@ import TableHeaderMixin from 'ember-light-table/mixins/table-header';
  */
 
 export default Component.extend(TableHeaderMixin, {
-  classNames: ['lt-foot-wrap'],
   table: null,
   sharedOptions: null,
   sharedOptionsFixedKey: 'fixedFooter',
