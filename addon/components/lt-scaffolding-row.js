@@ -1,3 +1,7 @@
 import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
 
-export default Component.extend({});
+@classic
+export default class LtScaffoldingRowComponent extends Component {
+  tagName = '';
+}
