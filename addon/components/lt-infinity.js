@@ -1,14 +1,16 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
+import classic from 'ember-classic-decorator';
 
-export default Component.extend({
-  inViewport: service(),
+@classic
+export default class LtInfinityComponent extends Component {
+  @service inViewport;
 
-  scrollableContent: null,
-  scrollBuffer: 50,
+  scrollableContent = null;
+  scrollBuffer = 50;
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
 
     const options = {
       viewportSpy: true,
@@ -27,18 +29,18 @@ export default Component.extend({
 
     onEnter(this.didEnterViewport.bind(this));
     onExit(this.didExitViewport.bind(this));
-  },
+  }
 
   willDestroyElement() {
-    this._super(...arguments);
+    super.willDestroyElement(...arguments);
     this.inViewport.stopWatching(this.element);
-  },
+  }
 
   didEnterViewport() {
     this.enterViewport();
-  },
+  }
 
   didExitViewport() {
     this.exitViewport();
-  },
-});
+  }
+}
