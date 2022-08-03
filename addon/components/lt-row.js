@@ -1,5 +1,10 @@
 import classic from 'ember-classic-decorator';
-import { classNames, attributeBindings, classNameBindings, tagName } from '@ember-decorators/component';
+import {
+  classNames,
+  attributeBindings,
+  classNameBindings,
+  tagName,
+} from '@ember-decorators/component';
 import { readOnly } from '@ember/object/computed';
 import Component from '@ember/component';
 
