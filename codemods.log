@@ -1,0 +1,32 @@
+2022-08-03T04:27:51.903Z [warn] [./addon/mixins/draggable-column.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2022-08-03T04:27:52.021Z [warn] [./addon/mixins/table-header.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2022-08-03T04:27:52.058Z [warn] [./addon/utils/css-styleify.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2022-08-03T04:27:52.065Z [warn] [./addon/utils/closest.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2022-08-03T04:27:52.107Z [info] [./addon/components/lt-column-resizer.js]: SUCCESS
+2022-08-03T04:27:52.111Z [warn] [./addon/-private/global-options.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2022-08-03T04:27:52.263Z [info] [./addon/components/lt-infinity.js]: SUCCESS
+2022-08-03T04:27:52.359Z [info] [./addon/components/lt-scaffolding-row.js]: SUCCESS
+2022-08-03T04:27:52.401Z [info] [./addon/components/lt-row.js]: SUCCESS
+2022-08-03T04:27:52.438Z [info] [./addon/components/lt-foot.js]: SUCCESS
+2022-08-03T04:27:52.482Z [info] [./addon/components/lt-scrollable.js]: SUCCESS
+2022-08-03T04:27:52.488Z [info] [./addon/components/lt-spanned-row.js]: SUCCESS
+2022-08-03T04:27:52.705Z [info] [./addon/components/columns/base.js]: SUCCESS
+2022-08-03T04:27:52.926Z [warn] [./addon/components/light-table.js]: FAILURE 
+Validation errors: 
+	[onBeforeResponsiveChange]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[onAfterResponsiveChange]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+2022-08-03T04:27:52.971Z [info] [./addon/components/cells/base.js]: SUCCESS
+2022-08-03T04:27:53.102Z [warn] [./addon/components/lt-body.js]: FAILURE 
+Validation errors: 
+	[scheduleScrolledToBottom]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+	[onRowsChange]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+	[setupScrollOffset]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+	[enterViewport]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+	[exitViewport]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+	[onRowClick]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[onRowDoubleClick]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[onScroll]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[firstVisibleChanged]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[lastVisibleChanged]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[firstReached]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[lastReached]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
