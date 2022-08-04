@@ -357,9 +357,15 @@ export default Component.extend({
     }
   },
 
-  // No-ops for closure actions
-  onBeforeResponsiveChange() {},
-  onAfterResponsiveChange() {},
+  // Handle NOOP closure actions
+
+  get _onBeforeResponsiveChange() {
+    return this.onBeforeResponsiveChange || function () {};
+  },
+
+  get _onAfterResponsiveChange() {
+    return this.onAfterResponsiveChange || function () {};
+  },
 
   actions: {
     /**
@@ -370,7 +376,7 @@ export default Component.extend({
      * @param  {Array} matches list of matching breakpoints
      */
     onBeforeResponsiveChange(/* matches */) {
-      this.onBeforeResponsiveChange(...arguments);
+      this._onBeforeResponsiveChange(...arguments);
     },
 
     /**
@@ -381,7 +387,7 @@ export default Component.extend({
      * @param  {Array} matches list of matching breakpoints
      */
     onAfterResponsiveChange(/* matches */) {
-      this.onAfterResponsiveChange(...arguments);
+      this._onAfterResponsiveChange(...arguments);
     },
   },
 });
