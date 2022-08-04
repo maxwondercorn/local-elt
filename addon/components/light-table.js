@@ -36,7 +36,7 @@ function intersections(array1, array2) {
  * @main Components
  */
 
-const LightTable = Component.extend({
+export default Component.extend({
   tagName: '',
 
   media: service(),
@@ -357,9 +357,15 @@ const LightTable = Component.extend({
     }
   },
 
-  // No-ops for closure actions
-  onBeforeResponsiveChange() {},
-  onAfterResponsiveChange() {},
+  // Handle NOOP closure actions
+
+  get _onBeforeResponsiveChange() {
+    return this.onBeforeResponsiveChange || function () {};
+  },
+
+  get _onAfterResponsiveChange() {
+    return this.onAfterResponsiveChange || function () {};
+  },
 
   actions: {
     /**
@@ -370,7 +376,7 @@ const LightTable = Component.extend({
      * @param  {Array} matches list of matching breakpoints
      */
     onBeforeResponsiveChange(/* matches */) {
-      this.onBeforeResponsiveChange(...arguments);
+      this._onBeforeResponsiveChange(...arguments);
     },
 
     /**
@@ -381,13 +387,7 @@ const LightTable = Component.extend({
      * @param  {Array} matches list of matching breakpoints
      */
     onAfterResponsiveChange(/* matches */) {
-      this.onAfterResponsiveChange(...arguments);
+      this._onAfterResponsiveChange(...arguments);
     },
   },
 });
-
-LightTable.reopenClass({
-  positionalParams: ['table'],
-});
-
-export default LightTable;

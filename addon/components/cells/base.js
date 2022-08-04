@@ -1,6 +1,13 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
+import {
+  classNames,
+  attributeBindings,
+  classNameBindings,
+  tagName,
+} from '@ember-decorators/component';
 import { computed } from '@ember/object';
 import { readOnly } from '@ember/object/computed';
+import Component from '@ember/component';
 import { htmlSafe } from '@ember/template';
 
 /**
@@ -13,75 +20,79 @@ import { htmlSafe } from '@ember/template';
  * @class Base Cell
  */
 
-const Cell = Component.extend({
-  tagName: 'td',
-  classNames: ['lt-cell'],
-  attributeBindings: ['style'],
-  classNameBindings: ['align', 'isSorted', 'column.cellClassNames'],
+@classic
+@tagName('td')
+@classNames('lt-cell')
+@attributeBindings('style')
+@classNameBindings('align', 'isSorted', 'column.cellClassNames')
+export default class Base extends Component {
+  enableScaffolding = false;
 
-  enableScaffolding: false,
+  @readOnly('column.sorted')
+  isSorted;
 
-  isSorted: readOnly('column.sorted'),
-
-  style: computed('enableScaffolding', 'column.width', function () {
+  @computed('enableScaffolding', 'column.width')
+  get style() {
     let column = this.column;
     let columnWidth = column.get('width');
 
     if (this.enableScaffolding || !column) {
-      return;
+      return null;
     }
 
     // For performance reasons, it's more interesting to bypass cssStyleify
     // since it leads to a lot of garbage collections
     // when displaying many cells
     return columnWidth ? htmlSafe(`width: ${columnWidth};`) : null;
-  }),
+  }
 
-  align: computed('column.align', function () {
+  @computed('column.align')
+  get align() {
     return `align-${this.column.align}`;
-  }),
+  }
 
   /**
    * @property table
    * @type {Table}
    */
-  table: null,
+  table = null;
 
   /**
    * @property column
    * @type {Column}
    */
-  column: null,
+  column = null;
 
   /**
    * @property row
    * @type {Row}
    */
-  row: null,
+  row = null;
 
   /**
    * @property tableActions
    * @type {Object}
    */
-  tableActions: null,
+  tableActions = null;
 
   /**
    * @property extra
    * @type {Object}
    */
-  extra: null,
+  extra = null;
 
   /**
    * @property rawValue
    * @type {Mixed}
    */
-  rawValue: null,
+  rawValue = null;
 
   /**
    * @property value
    * @type {Mixed}
    */
-  value: computed('column.format', 'rawValue', function () {
+  @computed('column.format', 'rawValue')
+  get value() {
     let rawValue = this.rawValue;
     let format = this.column.format;
 
@@ -90,11 +101,5 @@ const Cell = Component.extend({
     }
 
     return rawValue;
-  }),
-});
-
-Cell.reopenClass({
-  positionalParams: ['column', 'row'],
-});
-
-export default Cell;
+  }
+}

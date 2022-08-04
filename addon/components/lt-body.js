@@ -450,14 +450,35 @@ export default Component.extend({
     cancel(this._debounceTimer);
   },
 
-  // Noop for closure actions
-  onRowClick() {},
-  onRowDoubleClick() {},
-  onScroll() {},
-  firstVisibleChanged() {},
-  lastVisibleChanged() {},
-  firstReached() {},
-  lastReached() {},
+  // Handle NOOP closure actions
+
+  get _onRowClick() {
+    return this.onRowClick || function () {};
+  },
+
+  get _onRowDoubleClick() {
+    return this.onRowDoubleClick || function () {};
+  },
+
+  get _onScroll() {
+    return this.onScroll || function () {};
+  },
+
+  get _firstVisibleChanged() {
+    return this.firstVisibleChanged || function () {};
+  },
+
+  get _lastVisibleChanged() {
+    return this.lastVisibleChanged || function () {};
+  },
+
+  get _firstReached() {
+    return this.firstReached || function () {};
+  },
+
+  get _lastReached() {
+    return this.lastReached || function () {};
+  },
 
   /**
    * lt-infinity action to determine if component is still in viewport
@@ -528,7 +549,7 @@ export default Component.extend({
         toggleExpandedRow();
       }
 
-      this.onRowClick(...arguments);
+      this._onRowClick(...arguments);
     },
 
     /**
@@ -538,7 +559,7 @@ export default Component.extend({
      * @param  {Event}   event   The click event
      */
     onRowDoubleClick(/* row */) {
-      this.onRowDoubleClick(...arguments);
+      this._onRowDoubleClick(...arguments);
     },
 
     /**
@@ -553,26 +574,26 @@ export default Component.extend({
      */
     onScroll(scrollOffset /* , event */) {
       this.set('currentScrollOffset', scrollOffset);
-      this.onScroll(...arguments);
+      this._onScroll(...arguments);
     },
 
     firstVisibleChanged(item, index /* , key */) {
-      this.firstVisibleChanged(...arguments);
+      this._firstVisibleChanged(...arguments);
       const estimateScrollOffset =
         index * this.sharedOptions.estimatedRowHeight;
-      this.onScroll(estimateScrollOffset, null);
+      this._onScroll(estimateScrollOffset, null);
     },
 
     lastVisibleChanged(/* item, index, key */) {
-      this.lastVisibleChanged(...arguments);
+      this._lastVisibleChanged(...arguments);
     },
 
     firstReached(/* item, index, key */) {
-      this.firstReached(...arguments);
+      this._firstReached(...arguments);
     },
 
     lastReached(/* item, index, key */) {
-      this.lastReached(...arguments);
+      this._lastReached(...arguments);
       this.onScrolledToBottom?.();
     },
   },
